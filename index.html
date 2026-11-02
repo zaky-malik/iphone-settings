@@ -61,13 +61,13 @@ body{
 .sec{margin-top:20px}
 .sec:first-child{margin-top:10px}
 .cd{background:var(--card);margin:0 16px;border-radius:12px;overflow:hidden}
-.rw{display:flex;align-items:center;padding:7px 16px;min-height:44px;position:relative;gap:13px;cursor:pointer}
+.rw{display:flex;align-items:center;padding:12px 16px;min-height:52px;position:relative;gap:14px;cursor:pointer}
 .rw:active{background:var(--sep)}
 .rw+.rw::before{content:'';position:absolute;top:0;right:0;height:.33px;background:var(--sep)}
-.rw.icn+.rw::before{left:58px}
+.rw.icn+.rw::before{left:59px}
 .rw:not(.icn)+.rw::before{left:16px}
-.ic{width:30px;height:30px;border-radius:7px;flex-shrink:0;overflow:hidden}
-.ic img{width:30px;height:30px;display:block}
+.ic{width:29px;height:29px;border-radius:6.5px;flex-shrink:0;overflow:hidden}
+.ic img{width:29px;height:29px;display:block}
 .rw-c{flex:1;min-width:0}
 .rw-l{font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rw-v{font-size:17px;color:var(--fg3);flex-shrink:0;white-space:nowrap}
@@ -91,10 +91,10 @@ body{
 .rnav.vis{background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:var(--nav-border)}
 .rnav span{font-size:17px;font-weight:600;opacity:0;transition:opacity .15s}
 .rnav.vis span{opacity:1}
-.tsrch{margin:8px 16px 2px}
-.tsrch-in{display:flex;align-items:center;gap:6px;padding:7px 8px;background:var(--searchbg);border-radius:10px}
-.tsrch-ph{flex:1;color:var(--fg3);font-size:17px;letter-spacing:-.2px}
-.tsrch-mic{flex-shrink:0;display:flex}
+.bsrch{position:absolute;left:0;right:0;bottom:0;z-index:80;padding:16px 18px 10px;background:linear-gradient(to top,var(--bg) 42%,rgba(0,0,0,0));pointer-events:none}
+.bsrch-in{pointer-events:auto;display:flex;align-items:center;gap:9px;padding:11px 17px;background:var(--searchbg);border-radius:30px;backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);box-shadow:0 1px 6px rgba(0,0,0,.08)}
+.bsrch-ph{flex:1;color:var(--fg3);font-size:17px}
+.bsrch-mic{flex-shrink:0;display:flex}
 .shell::after{content:'';position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:var(--fg);opacity:.15;z-index:999;pointer-events:none}
 @media all and (display-mode:standalone){
   .sbar{display:none!important}
@@ -102,7 +102,7 @@ body{
   .rnav{top:calc(-1 * env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);height:calc(52px + env(safe-area-inset-top,0px))}
   .nb{margin-top:calc(-1 * env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);height:calc(56px + env(safe-area-inset-top,0px))}
   .shell::after{display:none}
-  .scr{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+  .bsrch{padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
 }
 </style>
 
@@ -117,13 +117,6 @@ body{
     <div class="rnav" id="rnav"><span>Pengaturan</span></div>
     <div class="scr" id="sc0">
       <div class="lt"><h1>Pengaturan</h1></div>
-      <div class="tsrch">
-        <div class="tsrch-in">
-          <svg width="16" height="16" viewBox="0 0 20 20" style="flex-shrink:0"><path d="M8.5 3a5.5 5.5 0 014.38 8.82l4.65 4.65a.75.75 0 01-1.06 1.06l-4.65-4.65A5.5 5.5 0 118.5 3zm0 1.5a4 4 0 100 8 4 4 0 000-8z" fill="var(--fg3)"/></svg>
-          <span class="tsrch-ph">Cari</span>
-          <svg class="tsrch-mic" width="13" height="19" viewBox="0 0 13 19"><rect x="3.5" y="1" width="6" height="10" rx="3" fill="var(--fg3)"/><path d="M1 8.5a5.5 5.5 0 0011 0" fill="none" stroke="var(--fg3)" stroke-width="1.4" stroke-linecap="round"/><path d="M6.5 14v3.5" fill="none" stroke="var(--fg3)" stroke-width="1.4" stroke-linecap="round"/></svg>
-        </div>
-      </div>
 
       <!-- Apple ID -->
       <div class="sec">
@@ -346,7 +339,16 @@ body{
         </div>
       </div>
 
-      <div style="height:20px"></div>
+      <div style="height:84px"></div>
+    </div>
+
+    <!-- Bottom floating search pill (iOS 18 style) -->
+    <div class="bsrch">
+      <div class="bsrch-in">
+        <svg width="16" height="16" viewBox="0 0 20 20" style="flex-shrink:0"><path d="M8.5 3a5.5 5.5 0 014.38 8.82l4.65 4.65a.75.75 0 01-1.06 1.06l-4.65-4.65A5.5 5.5 0 118.5 3zm0 1.5a4 4 0 100 8 4 4 0 000-8z" fill="var(--fg3)"/></svg>
+        <span class="bsrch-ph">Cari</span>
+        <svg class="bsrch-mic" width="13" height="19" viewBox="0 0 13 19"><rect x="3.5" y="1" width="6" height="10" rx="3" fill="var(--fg3)"/><path d="M1 8.5a5.5 5.5 0 0011 0" fill="none" stroke="var(--fg3)" stroke-width="1.4" stroke-linecap="round"/><path d="M6.5 14v3.5" fill="none" stroke="var(--fg3)" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </div>
     </div>
   </div>
 
