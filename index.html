@@ -1,0 +1,563 @@
+<title>Pengaturan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Pengaturan">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#f2f2f7;--card:#fff;--fg:#000;--fg2:#3c3c43;--fg3:#8e8e93;
+  --sep:rgba(60,60,67,.18);--blue:#007aff;--green:#34c759;--red:#ff3b30;
+  --orange:#ff9500;--indigo:#5856d6;--teal:#5ac8fa;--pink:#ff2d55;
+  --searchbg:rgba(118,118,128,.12);--gray:#8e8e93;
+  --nav-bg:rgba(249,249,249,.94);--nav-border:rgba(60,60,67,.29);
+  --backbtn-bg:rgba(120,120,128,.12);
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#000;--card:#1c1c1e;--fg:#fff;--fg2:#ebebf5;--fg3:#8e8e93;
+  --sep:rgba(84,84,88,.34);--blue:#0a84ff;--green:#30d158;--red:#ff453a;
+  --orange:#ff9f0a;--indigo:#5e5ce6;--teal:#64d2ff;--pink:#ff375f;
+  --searchbg:rgba(118,118,128,.24);--gray:#8e8e93;
+  --nav-bg:rgba(30,30,30,.94);--nav-border:rgba(84,84,88,.65);
+  --backbtn-bg:rgba(120,120,128,.24);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#000;--card:#1c1c1e;--fg:#fff;--fg2:#ebebf5;--fg3:#8e8e93;
+  --sep:rgba(84,84,88,.34);--blue:#0a84ff;--green:#30d158;--red:#ff453a;
+  --orange:#ff9f0a;--indigo:#5e5ce6;--teal:#64d2ff;--pink:#ff375f;
+  --searchbg:rgba(118,118,128,.24);--gray:#8e8e93;
+  --nav-bg:rgba(30,30,30,.94);--nav-border:rgba(84,84,88,.65);
+  --backbtn-bg:rgba(120,120,128,.24);
+  color-scheme:dark;
+}
+html,body{height:100%;overflow:hidden}
+body{
+  background:var(--bg);color:var(--fg);
+  font-family:-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',system-ui,sans-serif;
+  font-size:17px;line-height:1.29;-webkit-font-smoothing:antialiased;
+  user-select:none;-webkit-user-select:none;
+  padding-left:max(0px,env(safe-area-inset-left,0px));
+  padding-right:max(0px,env(safe-area-inset-right,0px));
+}
+.shell{width:100%;max-width:440px;margin:0 auto;height:100%;display:flex;flex-direction:column;overflow:hidden;position:relative}
+.sbar{height:54px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 16px 6px;flex-shrink:0;position:relative;z-index:300;background:var(--bg)}
+.sbar-l{font-size:17px;font-weight:600;letter-spacing:.3px;min-width:54px}
+.sbar-r{display:flex;align-items:center;gap:5px}
+.pg{position:absolute;top:54px;left:0;right:0;bottom:0;display:flex;flex-direction:column;background:var(--bg);will-change:transform;z-index:1}
+.pg[data-s="a"]{transform:translateX(0);z-index:10}
+.pg[data-s="l"]{transform:translateX(-30%);z-index:5;pointer-events:none;opacity:.4}
+.pg[data-s="r"]{transform:translateX(100%);z-index:5;pointer-events:none}
+.pg.tr{transition:transform .4s cubic-bezier(.25,.46,.45,.94),opacity .4s cubic-bezier(.25,.46,.45,.94)}
+.nb{height:56px;display:flex;align-items:center;padding:4px 16px 4px 12px;flex-shrink:0;position:relative;z-index:50;gap:6px;border-bottom:.33px solid transparent;transition:background .2s,border-color .2s}
+.nb.scrolled{background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:var(--nav-border)}
+.nb-back{width:34px;height:34px;border-radius:50%;background:var(--backbtn-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:none;cursor:pointer;color:var(--fg)}
+.nb-back svg{display:block}
+.nb-ttl{font-size:18px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lt{padding:44px 20px 10px;flex-shrink:0}
+.lt h1{font-size:34px;font-weight:700;letter-spacing:.37px;line-height:1.12}
+.scr{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding-bottom:20px}
+.sec{margin-top:20px}
+.sec:first-child{margin-top:10px}
+.cd{background:var(--card);margin:0 16px;border-radius:12px;overflow:hidden}
+.rw{display:flex;align-items:center;padding:12px 16px;min-height:44px;position:relative;gap:12px;cursor:pointer}
+.rw:active{background:var(--sep)}
+.rw+.rw::before{content:'';position:absolute;top:0;right:0;height:.33px;background:var(--sep)}
+.rw.icn+.rw::before{left:55px}
+.rw:not(.icn)+.rw::before{left:16px}
+.ic{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ic svg{display:block;fill:#fff}
+.rw-c{flex:1;min-width:0}
+.rw-l{font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rw-v{font-size:17px;color:var(--fg3);flex-shrink:0;white-space:nowrap}
+.chv{flex-shrink:0;color:rgba(60,60,67,.3);display:flex}
+.chv svg{width:7px;height:12px}
+.tog{width:51px;height:31px;border-radius:16px;position:relative;flex-shrink:0;cursor:pointer;transition:background .25s}
+.tog.off{background:#e9e9ea}
+.tog.on{background:var(--green)}
+.tog::after{content:'';width:27px;height:27px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px;box-shadow:0 3px 8px rgba(0,0,0,.15),0 1px 1px rgba(0,0,0,.06);transition:transform .25s cubic-bezier(.54,1.6,.5,1)}
+.tog.on::after{transform:translateX(20px)}
+.bdg{background:var(--red);color:#fff;font-size:15px;font-weight:400;min-width:22px;height:22px;border-radius:11px;display:flex;align-items:center;justify-content:center;padding:0 6px;flex-shrink:0}
+.prof{display:flex;align-items:center;gap:14px;padding:10px 16px}
+.prof-av{width:60px;height:60px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#a8d8ea,#aa96da);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:600;color:#fff}
+.prof-name{font-size:22px;font-weight:400;line-height:1.15}
+.prof-sub{font-size:13px;color:var(--fg3);margin-top:2px}
+.vpn-globe{width:30px;height:30px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.link-row{color:var(--blue);font-size:17px;padding:12px 16px;cursor:pointer}
+.link-row:active{background:var(--sep)}
+.rnav{position:absolute;top:0;left:0;right:0;height:52px;z-index:60;display:flex;align-items:flex-end;padding-bottom:10px;justify-content:center;pointer-events:none;border-bottom:.33px solid transparent;transition:background .2s,border-color .2s}
+.rnav.vis{background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:var(--nav-border)}
+.rnav span{font-size:17px;font-weight:600;opacity:0;transition:opacity .15s}
+.rnav.vis span{opacity:1}
+.bsrch{flex-shrink:0;padding:6px 16px 8px;z-index:80;background:var(--bg)}
+.bsrch-in{display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--searchbg);border-radius:12px}
+.bsrch-ph{flex:1;color:var(--fg3);font-size:17px}
+.bsrch-mic{flex-shrink:0;display:flex}
+.shell::after{content:'';position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:var(--fg);opacity:.15;z-index:999;pointer-events:none}
+@media all and (display-mode:standalone){
+  .sbar{display:none!important}
+  .pg{top:env(safe-area-inset-top,54px)}
+  .rnav{top:calc(-1 * env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);height:calc(52px + env(safe-area-inset-top,0px))}
+  .nb{margin-top:calc(-1 * env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);height:calc(56px + env(safe-area-inset-top,0px))}
+  .shell::after{display:none}
+  .bsrch{padding-bottom:calc(8px + env(safe-area-inset-bottom,0px))}
+}
+</style>
+
+<div class="shell">
+  <div class="sbar" id="sbar-main">
+    <span class="sbar-l" id="clk">22.47</span>
+    <div class="sbar-r">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 00-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L15 19v-5.5z"/></svg>
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor"><path d="M8 9.6a1.6 1.6 0 110 3.2 1.6 1.6 0 010-3.2zM4.7 7.3a4.7 4.7 0 016.6 0l1.1-1.1a6.2 6.2 0 00-8.8 0l1.1 1.1zM1.8 4.4a8.7 8.7 0 0112.4 0L15.3 3.3a10.2 10.2 0 00-14.6 0L1.8 4.4z"/></svg>
+      <svg width="28" height="13" viewBox="0 0 28 13" fill="currentColor">
+        <rect x=".5" y=".5" width="23" height="12" rx="2.5" stroke="currentColor" stroke-width="1" fill="none" opacity=".35"/>
+        <rect x="1.5" y="1.5" width="18" height="10" rx="1.5" opacity=".9"/>
+        <path d="M25.5 4.5v4a2 2 0 000-4" opacity=".4"/>
+        <text x="11.5" y="9.5" text-anchor="middle" style="fill:var(--bg)" font-size="8" font-weight="700" font-family="-apple-system,sans-serif">84</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ PAGE: Pengaturan ============ -->
+  <div class="pg" id="p0" data-s="a">
+    <div class="rnav" id="rnav"><span>Pengaturan</span></div>
+    <div class="scr" id="sc0">
+      <div class="lt"><h1>Pengaturan</h1></div>
+
+      <!-- Apple ID -->
+      <div class="sec">
+        <div class="cd">
+          <div class="rw prof" onclick="go('p-id')">
+            <div class="prof-av">ZM</div>
+            <div class="rw-c">
+              <div class="prof-name">Zaky malik ibrahim</div>
+              <div class="prof-sub">Akun Apple, iCloud, dan lainnya</div>
+            </div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw">
+            <div class="rw-c"><div class="rw-l">Saran Akun Apple</div></div>
+            <div class="bdg">2</div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Update -->
+      <div class="sec">
+        <div class="cd">
+          <div class="rw">
+            <div class="rw-c"><div class="rw-l">Pembaruan Perangkat Lunak Tersedia</div></div>
+            <div class="bdg">1</div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connectivity -->
+      <div class="sec">
+        <div class="cd">
+          <div class="rw icn">
+            <div class="ic" style="background:var(--orange)"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 00-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L15 19v-5.5z"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Mode Pesawat</div></div>
+            <div class="tog on" onclick="event.stopPropagation();this.classList.toggle('on');this.classList.toggle('off')"></div>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--blue)"><svg width="16" height="12" viewBox="0 0 16 12" fill="#fff"><path d="M8 9.6a1.6 1.6 0 110 3.2 1.6 1.6 0 010-3.2zM4.7 7.3a4.7 4.7 0 016.6 0l1.1-1.1a6.2 6.2 0 00-8.8 0l1.1 1.1zM1.8 4.4a8.7 8.7 0 0112.4 0L15.3 3.3a10.2 10.2 0 00-14.6 0L1.8 4.4z"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Wi-Fi</div></div>
+            <div class="rw-v">iQOO Z9 5G</div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--blue)"><svg width="12" height="16" viewBox="0 0 12 16" fill="#fff"><path d="M6 0l3 3H8v4l2.5 1.5L12 16H0l1.5-7.5L4 7V3H3z"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Bluetooth</div></div>
+            <div class="rw-v">Tidak Terhubung</div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--green)"><svg width="16" height="16" viewBox="0 0 20 20" fill="#fff"><path d="M10 0a2 2 0 012 2v16a2 2 0 01-4 0V2a2 2 0 012-2zM4 5a2 2 0 012 2v8a2 2 0 01-4 0V7a2 2 0 012-2zm12 0a2 2 0 012 2v8a2 2 0 01-4 0V7a2 2 0 012-2z"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Seluler</div></div>
+            <div class="rw-v">Mati</div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--green)"><svg width="16" height="16" viewBox="0 0 20 20" fill="#fff"><circle cx="10" cy="10" r="3"/><circle cx="10" cy="10" r="7" fill="none" stroke="#fff" stroke-width="2"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Hotspot Pribadi</div></div>
+            <div class="rw-v">Mati</div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--green)"><svg width="16" height="12" viewBox="0 0 20 14" fill="#fff"><rect x="0" y="1" width="17" height="12" rx="2"/><rect x="17" y="4" width="3" height="6" rx="1"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Baterai</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- System -->
+      <div class="sec">
+        <div class="cd">
+          <div class="rw icn" onclick="go('p-gen')">
+            <div class="ic" style="background:var(--gray)"><svg width="17" height="17" viewBox="0 0 20 20"><path d="M17.1 10.9c0-.3.1-.6.1-.9s0-.6-.1-.9l2-1.6a.5.5 0 00.1-.6l-1.9-3.3a.5.5 0 00-.6-.2l-2.4 1c-.5-.4-1-.7-1.6-.9L12.3.4A.5.5 0 0011.9 0H8.1a.5.5 0 00-.5.4l-.4 2.5c-.6.2-1.1.5-1.6.9l-2.4-1a.5.5 0 00-.6.2L.7 6.4a.5.5 0 00.1.6l2 1.6c0 .3-.1.6-.1.9s0 .6.1.9l-2 1.6a.5.5 0 00-.1.6l1.9 3.3c.1.2.4.3.6.2l2.4-1c.5.4 1 .7 1.6.9l.4 2.5c0 .2.2.4.5.4h3.8c.2 0 .4-.2.5-.4l.4-2.5c.6-.2 1.1-.5 1.6-.9l2.4 1c.2.1.5 0 .6-.2l1.9-3.3a.5.5 0 00-.1-.6l-2-1.6zM10 13.6a3.6 3.6 0 110-7.2 3.6 3.6 0 010 7.2z"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Umum</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--blue)"><svg width="16" height="16" viewBox="0 0 20 20" fill="#fff"><circle cx="10" cy="5" r="3" fill="none" stroke="#fff" stroke-width="2"/><path d="M10 8v8M4 12h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Aksesibilitas</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--gray)"><svg width="14" height="14" viewBox="0 0 20 20"><path d="M8.5 3a5.5 5.5 0 014.38 8.82l4.65 4.65a.75.75 0 01-1.06 1.06l-4.65-4.65A5.5 5.5 0 118.5 3zm0 1.5a4 4 0 100 8 4 4 0 000-8z"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Cari</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--gray)"><svg width="16" height="14" viewBox="0 0 20 16" fill="#fff"><path d="M7 1L5.5 3.5H2.5A2 2 0 00.5 5.5v9a2 2 0 002 2h15a2 2 0 002-2v-9a2 2 0 00-2-2h-3L13 1H7z"/><circle cx="10" cy="9.5" r="3.5" fill="none" stroke="var(--gray)" stroke-width="1.5"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Kamera</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--blue)"><svg width="16" height="16" viewBox="0 0 20 20" fill="#fff"><circle cx="10" cy="10" r="4.5"/><path d="M10 1v3m0 12v3M1 10h3m12 0h3" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Layar & Kecerahan</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--blue)"><svg width="16" height="16" viewBox="0 0 20 20" fill="#fff"><rect x="1" y="1" width="7.5" height="7.5" rx="1.8"/><rect x="11.5" y="1" width="7.5" height="7.5" rx="1.8"/><rect x="1" y="11.5" width="7.5" height="7.5" rx="1.8"/><rect x="11.5" y="11.5" width="7.5" height="7.5" rx="1.8"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Layar Utama & Perpustakaan App</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--gray)"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="6" cy="6" r="3" stroke="#fff" stroke-width="1.8"/><circle cx="14" cy="14" r="3" stroke="#fff" stroke-width="1.8"/><path d="M6 9v5M14 6v5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Pusat Kontrol</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--green)"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#fff" stroke-width="2"/><circle cx="10" cy="10" r="2" fill="#fff"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Siaga</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:linear-gradient(135deg,#ff6b6b,#ffa500,#ffe66d,#06d6a0,#118ab2,#8338ec)"><svg width="14" height="14" viewBox="0 0 20 20" fill="#fff"><circle cx="10" cy="10" r="7" fill="none" stroke="#fff" stroke-width="2.2"/><circle cx="10" cy="10" r="3"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Siri</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--blue)"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#fff" stroke-width="2"/><path d="M10 2a8 8 0 010 16" fill="#fff"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Tampilan</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--teal)"><svg width="16" height="16" viewBox="0 0 20 20" fill="#fff"><circle cx="10" cy="10" r="2"/><circle cx="10" cy="4" r="1.5"/><circle cx="10" cy="16" r="1.5"/><circle cx="4" cy="10" r="1.5"/><circle cx="16" cy="10" r="1.5"/><circle cx="5.8" cy="5.8" r="1.2"/><circle cx="14.2" cy="5.8" r="1.2"/><circle cx="5.8" cy="14.2" r="1.2"/><circle cx="14.2" cy="14.2" r="1.2"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Wallpaper</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <div class="sec">
+        <div class="cd">
+          <div class="rw icn">
+            <div class="ic" style="background:var(--red)"><svg width="14" height="16" viewBox="0 0 14 18" fill="#fff"><path d="M7 0a2 2 0 00-2 2v.3C2.2 3.4.5 6 .5 9v3.5L0 14v1h14v-1l-.5-1.5V9c0-3-1.7-5.6-4.5-6.7V2a2 2 0 00-2-2zM7 18a2 2 0 002-2H5a2 2 0 002 2z"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Notifikasi</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--pink)"><svg width="16" height="16" viewBox="0 0 20 20" fill="#fff"><path d="M3 8v4h3l5 5V3L6 8zm10.5 2a4.5 4.5 0 00-2-3.7v7.4a4.5 4.5 0 002-3.7z"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Bunyi & Haptik</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--blue)"><svg width="16" height="16" viewBox="0 0 20 20" fill="#fff"><path d="M13.5 3.5a7 7 0 11-6.4 12.3A5.5 5.5 0 0013.5 3.5z"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Fokus</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--indigo)"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#fff" stroke-width="1.8"/><path d="M10 4v6l4 2.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Durasi Layar</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Security -->
+      <div class="sec">
+        <div class="cd">
+          <div class="rw icn">
+            <div class="ic" style="background:var(--green)"><svg width="16" height="16" viewBox="0 0 20 20" fill="#fff"><circle cx="10" cy="7" r="3.5" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6" fill="none" stroke="#fff" stroke-width="1.8"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Face ID & Kode Sandi</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--red)"><svg width="16" height="12" viewBox="0 0 24 14" fill="#fff"><text x="12" y="11" text-anchor="middle" font-size="10" font-weight="800" font-family="-apple-system,sans-serif" fill="#fff">SOS</text></svg></div>
+            <div class="rw-c"><div class="rw-l">Darurat SOS</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--blue)"><svg width="14" height="16" viewBox="0 0 14 18" fill="#fff"><path d="M7 1v6M4 4.5L7 7l3-2.5M3 8c-2 1-3 2.5-3 4.5C0 15 2.5 17 7 17s7-2 7-4.5C14 10.5 13 9 11 8"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Privasi & Keamanan</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other -->
+      <div class="sec">
+        <div class="cd">
+          <div class="rw icn">
+            <div class="ic" style="background:#1c1c1e"><svg width="16" height="14" viewBox="0 0 20 16" fill="#fff"><rect x="1" y="1" width="18" height="14" rx="3"/><rect x="3" y="4" width="14" height="3" rx="1" fill="#ff9500"/><rect x="3" y="9" width="14" height="3" rx="1" fill="#ff3b30"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Dompet</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:linear-gradient(135deg,#ff6b6b,#ffd93d,#6bcb77,#4d96ff)"><svg width="14" height="14" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="4" stroke="#fff" stroke-width="2"/><circle cx="10" cy="3" r="2" fill="#fff"/><circle cx="10" cy="17" r="2" fill="#fff"/><circle cx="3" cy="10" r="2" fill="#fff"/><circle cx="17" cy="10" r="2" fill="#fff"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Game Center</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+          <div class="rw icn">
+            <div class="ic" style="background:var(--blue)"><svg width="16" height="12" viewBox="0 0 20 14" fill="#fff"><path d="M10 0C6 0 3 2 1.5 5a4 4 0 005 5h7a4 4 0 005-5C17 2 14 0 10 0z"/></svg></div>
+            <div class="rw-c"><div class="rw-l">iCloud</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- App -->
+      <div class="sec">
+        <div class="cd">
+          <div class="rw icn">
+            <div class="ic" style="background:var(--blue)"><svg width="16" height="16" viewBox="0 0 20 20" fill="#fff"><rect x="1" y="1" width="7" height="7" rx="1.5"/><rect x="12" y="1" width="7" height="7" rx="1.5"/><rect x="1" y="12" width="7" height="7" rx="1.5"/><rect x="12" y="12" width="7" height="7" rx="1.5"/></svg></div>
+            <div class="rw-c"><div class="rw-l">App</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Developer -->
+      <div class="sec">
+        <div class="cd">
+          <div class="rw icn">
+            <div class="ic" style="background:var(--gray)"><svg width="16" height="16" viewBox="0 0 20 20" fill="#fff"><path d="M12.5 2L10 4.5 7.5 2 2 7.5 4.5 10 2 12.5 7.5 18 10 15.5 12.5 18 18 12.5 15.5 10 18 7.5z"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Pengembang</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:20px"></div>
+    </div>
+
+    <!-- Bottom search bar (fixed) -->
+    <div class="bsrch">
+      <div class="bsrch-in">
+        <svg width="14" height="14" viewBox="0 0 20 20" style="fill:var(--fg3);flex-shrink:0"><path d="M8.5 3a5.5 5.5 0 014.38 8.82l4.65 4.65a.75.75 0 01-1.06 1.06l-4.65-4.65A5.5 5.5 0 118.5 3zm0 1.5a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        <span class="bsrch-ph">Cari</span>
+        <svg class="bsrch-mic" width="12" height="18" viewBox="0 0 12 18" style="fill:var(--fg3)"><rect x="3" y="0" width="6" height="10" rx="3"/><path d="M0 8a6 6 0 0012 0" fill="none" stroke="var(--fg3)" stroke-width="1.5"/><path d="M6 14v3" fill="none" stroke="var(--fg3)" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PAGE: Umum ============ -->
+  <div class="pg" id="p-gen" data-s="r">
+    <div class="nb">
+      <button class="nb-back" onclick="back('p0')"><svg width="11" height="18" viewBox="0 0 11 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5L2 9l7.5 7.5"/></svg></button>
+      <span class="nb-ttl">Umum</span>
+    </div>
+    <div class="scr">
+      <div class="sec" style="margin-top:4px">
+        <div class="cd">
+          <div class="rw"><div class="rw-c"><div class="rw-l">Mengenai</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">Pembaruan Perangkat Lunak</div></div><div class="bdg">1</div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="cd">
+          <div class="rw"><div class="rw-c"><div class="rw-l">Penyimpanan iPhone</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">Latar Belakang App Segarkan</div></div><div class="rw-v">Wi-Fi</div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="cd">
+          <div class="rw"><div class="rw-c"><div class="rw-l">AirDrop</div></div><div class="rw-v">Menerima Mati</div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">AirPlay & Kontinuitas</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">Gambar dalam Gambar</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">CarPlay</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="cd">
+          <div class="rw" onclick="go('p-vpn')">
+            <div class="rw-c"><div class="rw-l">Manajemen VPN & Perangkat</div></div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="cd">
+          <div class="rw"><div class="rw-c"><div class="rw-l">Kamus</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">Bahasa & Wilayah</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="cd">
+          <div class="rw"><div class="rw-c"><div class="rw-l">Transfer atau Atur Ulang iPhone</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">Matikan</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+        </div>
+      </div>
+      <div style="height:60px"></div>
+    </div>
+  </div>
+
+  <!-- ============ PAGE: Manajemen VPN & Perangkat — KOSONG ============ -->
+  <div class="pg" id="p-vpn" data-s="r">
+    <div class="nb">
+      <button class="nb-back" onclick="back('p-gen')"><svg width="11" height="18" viewBox="0 0 11 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5L2 9l7.5 7.5"/></svg></button>
+      <span class="nb-ttl">Manajemen VPN & Perangkat</span>
+    </div>
+    <div class="scr">
+      <div class="sec" style="margin-top:12px">
+        <div class="cd">
+          <div class="rw icn" style="cursor:default">
+            <div class="vpn-globe">
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="#fff">
+                <circle cx="10" cy="10" r="8.5" fill="none" stroke="#fff" stroke-width="1.5"/>
+                <ellipse cx="10" cy="10" rx="4" ry="8.5" fill="none" stroke="#fff" stroke-width="1.5"/>
+                <path d="M2 7.5h16M2 12.5h16" stroke="#fff" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <div class="rw-c"><div class="rw-l">VPN</div></div>
+            <div class="rw-v">Tidak Terhubung</div>
+            <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
+          </div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="cd">
+          <div class="link-row">Masuk ke Akun Kantor atau Sekolah...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PAGE: Apple ID ============ -->
+  <div class="pg" id="p-id" data-s="r">
+    <div class="nb">
+      <button class="nb-back" onclick="back('p0')"><svg width="11" height="18" viewBox="0 0 11 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5L2 9l7.5 7.5"/></svg></button>
+      <span class="nb-ttl">Akun Apple</span>
+    </div>
+    <div class="scr">
+      <div style="padding:24px 20px;text-align:center">
+        <div style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#a8d8ea,#aa96da);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:600;color:#fff">ZM</div>
+        <div style="font-size:26px;font-weight:600">Zaky malik ibrahim</div>
+        <div style="font-size:14px;color:var(--fg3);margin-top:4px">zakymalik@icloud.com</div>
+      </div>
+      <div class="sec">
+        <div class="cd">
+          <div class="rw"><div class="rw-c"><div class="rw-l">Info Pribadi</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">Masuk & Keamanan</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">Pembayaran & Pengiriman</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="cd">
+          <div class="rw"><div class="rw-c"><div class="rw-l">iCloud</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">Media & Pembelian</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">Cari Milik Saya</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="cd">
+          <div class="rw" style="justify-content:center"><div style="color:var(--red);font-size:17px">Keluar</div></div>
+        </div>
+      </div>
+      <div style="height:60px"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function tick(){
+    var d=new Date(),h=d.getHours(),m=String(d.getMinutes()).padStart(2,'0');
+    document.querySelectorAll('[id^=clk]').forEach(function(e){e.textContent=h+'.'+m});
+  }
+  tick();setInterval(tick,10000);
+
+  var stack=['p0'];
+  window.go=function(id){
+    var cur=stack[stack.length-1];
+    stack.push(id);
+    var c=document.getElementById(cur),n=document.getElementById(id);
+    n.dataset.s='r';void n.offsetWidth;
+    c.classList.add('tr');n.classList.add('tr');
+    requestAnimationFrame(function(){c.dataset.s='l';n.dataset.s='a'});
+    setTimeout(function(){c.classList.remove('tr');n.classList.remove('tr')},420);
+  };
+  window.back=function(id){
+    var cur=stack.pop();
+    var c=document.getElementById(cur),n=document.getElementById(id);
+    n.dataset.s='l';void n.offsetWidth;
+    c.classList.add('tr');n.classList.add('tr');
+    requestAnimationFrame(function(){c.dataset.s='r';n.dataset.s='a'});
+    setTimeout(function(){c.classList.remove('tr');n.classList.remove('tr')},420);
+  };
+
+  var sc0=document.getElementById('sc0'),rnav=document.getElementById('rnav');
+  if(sc0&&rnav)sc0.addEventListener('scroll',function(){rnav.classList.toggle('vis',this.scrollTop>20)},{passive:true});
+  document.querySelectorAll('.pg:not(#p0)').forEach(function(pg){
+    var nb=pg.querySelector('.nb'),scr=pg.querySelector('.scr');
+    if(nb&&scr)scr.addEventListener('scroll',function(){nb.classList.toggle('scrolled',this.scrollTop>0)},{passive:true});
+  });
+
+  var sx,sy,swa=false,scc,scp;
+  document.addEventListener('touchstart',function(e){
+    if(stack.length<2)return;var t=e.touches[0];
+    if(t.clientX>35)return;sx=t.clientX;sy=t.clientY;swa=false;
+  },{passive:true});
+  document.addEventListener('touchmove',function(e){
+    if(sx==null)return;var t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy;
+    if(!swa){
+      if(Math.abs(dx)<10)return;
+      if(Math.abs(dy)>Math.abs(dx)){sx=undefined;return}
+      swa=true;scc=document.getElementById(stack[stack.length-1]);
+      scp=document.getElementById(stack[stack.length-2]);
+      scc.style.transition='none';scp.style.transition='none';
+    }
+    var p=Math.max(0,Math.min(1,dx/window.innerWidth));
+    scc.style.transform='translateX('+p*100+'%)';
+    scp.style.transform='translateX('+(-30+p*30)+'%)';scp.style.opacity=.4+p*.6;
+  },{passive:true});
+  document.addEventListener('touchend',function(){
+    if(!swa){sx=undefined;return}
+    var r=scc.getBoundingClientRect(),p=r.left/window.innerWidth;
+    scc.style.transition='transform .25s ease,opacity .25s ease';
+    scp.style.transition='transform .25s ease,opacity .25s ease';
+    if(p>.3){
+      scc.style.transform='translateX(100%)';scp.style.transform='translateX(0)';scp.style.opacity='1';
+      var a=scc,b=scp;
+      setTimeout(function(){a.style.cssText='';b.style.cssText='';a.dataset.s='r';b.dataset.s='a';stack.pop()},260);
+    }else{
+      scc.style.transform='translateX(0)';scp.style.transform='translateX(-30%)';scp.style.opacity='.4';
+      var a=scc,b=scp;
+      setTimeout(function(){a.style.cssText='';b.style.cssText=''},260);
+    }
+    sx=undefined;swa=false;
+  });
+
+  try{
+    var cv=document.createElement('canvas');cv.width=180;cv.height=180;
+    var cx=cv.getContext('2d');
+    var gr=cx.createLinearGradient(0,0,0,180);
+    gr.addColorStop(0,'#8E8E93');gr.addColorStop(1,'#636366');
+    cx.fillStyle=gr;
+    cx.beginPath();cx.moveTo(38,0);cx.lineTo(142,0);cx.quadraticCurveTo(180,0,180,38);cx.lineTo(180,142);cx.quadraticCurveTo(180,180,142,180);cx.lineTo(38,180);cx.quadraticCurveTo(0,180,0,142);cx.lineTo(0,38);cx.quadraticCurveTo(0,0,38,0);cx.fill();
+    cx.strokeStyle='#fff';cx.lineWidth=13;cx.beginPath();cx.arc(90,90,30,0,Math.PI*2);cx.stroke();
+    cx.fillStyle='#fff';
+    for(var i=0;i<8;i++){var a=i*Math.PI/4;cx.save();cx.translate(90,90);cx.rotate(a);cx.fillRect(-7,-50,14,16);cx.restore()}
+    var lnk=document.createElement('link');lnk.rel='apple-touch-icon';lnk.href=cv.toDataURL('image/png');document.head.appendChild(lnk);
+  }catch(e){}
+})();
+</script>
