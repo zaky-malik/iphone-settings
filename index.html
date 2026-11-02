@@ -66,8 +66,8 @@ body{
 .rw+.rw::before{content:'';position:absolute;top:0;right:0;height:.33px;background:var(--sep)}
 .rw.icn+.rw::before{left:55px}
 .rw:not(.icn)+.rw::before{left:16px}
-.ic{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.ic svg{display:block;fill:#fff;width:20px;height:20px}
+.ic{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.ic svg{display:block;width:20px;height:20px}
 .rw-c{flex:1;min-width:0}
 .rw-l{font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rw-v{font-size:17px;color:var(--fg3);flex-shrink:0;white-space:nowrap}
@@ -83,7 +83,8 @@ body{
 .prof-av{width:60px;height:60px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#a8d8ea,#aa96da);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:600;color:#fff}
 .prof-name{font-size:22px;font-weight:400;line-height:1.15}
 .prof-sub{font-size:13px;color:var(--fg3);margin-top:2px}
-.vpn-globe{width:30px;height:30px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.vpn-globe{width:30px;height:30px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.vpn-globe svg{width:20px;height:20px}
 .link-row{color:var(--blue);font-size:17px;padding:12px 16px;cursor:pointer}
 .link-row:active{background:var(--sep)}
 .rnav{position:absolute;top:0;left:0;right:0;height:52px;z-index:60;display:flex;align-items:flex-end;padding-bottom:10px;justify-content:center;pointer-events:none;border-bottom:.33px solid transparent;transition:background .2s,border-color .2s}
@@ -151,36 +152,36 @@ body{
       <div class="sec">
         <div class="cd">
           <div class="rw icn">
-            <div class="ic" style="background:var(--orange)"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 00-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L15 19v-5.5z"/></svg></div>
+            <div class="ic" style="background:var(--orange)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.3c-.75 0-1.35.95-1.35 2.1v4.9L2.8 14v2.1l7.85-2.35V19l-2.05 1.45V22L12 21.05 15.4 22v-1.55L13.35 19v-4.25L21.2 16.1V14l-7.85-4.7v-4.9c0-1.15-.6-2.1-1.35-2.1z"/></svg></div>
             <div class="rw-c"><div class="rw-l">Mode Pesawat</div></div>
             <div class="tog on" onclick="event.stopPropagation();this.classList.toggle('on');this.classList.toggle('off')"></div>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--blue)"><svg width="16" height="12" viewBox="0 0 16 12" fill="#fff"><path d="M8 9.6a1.6 1.6 0 110 3.2 1.6 1.6 0 010-3.2zM4.7 7.3a4.7 4.7 0 016.6 0l1.1-1.1a6.2 6.2 0 00-8.8 0l1.1 1.1zM1.8 4.4a8.7 8.7 0 0112.4 0L15.3 3.3a10.2 10.2 0 00-14.6 0L1.8 4.4z"/></svg></div>
+            <div class="ic" style="background:var(--blue)"><svg viewBox="0 0 24 18" fill="#fff"><circle cx="12" cy="15" r="2"/><path d="M12 7.6c2.5 0 4.8 1 6.5 2.6l-2 2A6.3 6.3 0 0012 10.4a6.3 6.3 0 00-4.5 1.8l-2-2A9.3 9.3 0 0112 7.6z"/><path d="M12 2.3c3.95 0 7.55 1.6 10.15 4.2l-2 2A11.4 11.4 0 0012 5.1 11.4 11.4 0 003.85 8.5l-2-2A14.3 14.3 0 0112 2.3z"/></svg></div>
             <div class="rw-c"><div class="rw-l">Wi-Fi</div></div>
             <div class="rw-v">iQOO Z9 5G</div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--blue)"><svg width="12" height="16" viewBox="0 0 12 18" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 1v16"/><path d="M6 1l4 4-4 4 4 4-4 4"/><path d="M2 5l4 4-4 4"/></svg></div>
+            <div class="ic" style="background:var(--blue)"><svg viewBox="0 0 14 20" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v14"/><path d="M7 3l3.5 3.5L3.5 13.5"/><path d="M7 17l3.5-3.5L3.5 6.5"/></svg></div>
             <div class="rw-c"><div class="rw-l">Bluetooth</div></div>
             <div class="rw-v">Tidak Terhubung</div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--green)"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><circle cx="10" cy="10" r="2" fill="#fff" stroke="none"/><path d="M6.5 6.5a5 5 0 000 7"/><path d="M13.5 6.5a5 5 0 010 7"/><path d="M4 4a8.5 8.5 0 000 12"/><path d="M16 4a8.5 8.5 0 010 12"/></svg></div>
+            <div class="ic" style="background:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="8" r="1.8" fill="#fff"/><path d="M12 9.5V20"/><path d="M9 20l3-10 3 10"/><path d="M8.5 5.5a5 5 0 000 7"/><path d="M15.5 5.5a5 5 0 010 7"/><path d="M6 3.5a8.5 8.5 0 000 11"/><path d="M18 3.5a8.5 8.5 0 010 11"/></svg></div>
             <div class="rw-c"><div class="rw-l">Seluler</div></div>
             <div class="rw-v">Mati</div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--green)"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="1.6"><rect x="1" y="6" width="11" height="8" rx="4"/><rect x="8" y="6" width="11" height="8" rx="4"/></svg></div>
+            <div class="ic" style="background:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"><path d="M9.5 14.5l5-5"/><path d="M11 7l1.6-1.6a3.6 3.6 0 015.1 5.1L16 12.2"/><path d="M13 17l-1.6 1.6a3.6 3.6 0 01-5.1-5.1L8 11.8"/></svg></div>
             <div class="rw-c"><div class="rw-l">Hotspot Pribadi</div></div>
             <div class="rw-v">Mati</div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--green)"><svg width="16" height="12" viewBox="0 0 22 14" fill="none"><rect x="1" y="1" width="18" height="12" rx="2.5" stroke="#fff" stroke-width="1.5"/><rect x="19" y="4" width="2.5" height="6" rx="1" fill="#fff"/><rect x="2.5" y="2.5" width="10" height="9" rx="1.5" fill="#fff"/></svg></div>
+            <div class="ic" style="background:var(--green)"><svg viewBox="0 0 24 16" fill="none"><rect x="1" y="3" width="19" height="10" rx="2.5" stroke="#fff" stroke-width="1.6"/><rect x="21" y="6" width="2.2" height="4" rx="1" fill="#fff"/></svg></div>
             <div class="rw-c"><div class="rw-l">Baterai</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
@@ -191,57 +192,57 @@ body{
       <div class="sec">
         <div class="cd">
           <div class="rw icn" onclick="go('p-gen')">
-            <div class="ic" style="background:var(--gray)"><svg width="17" height="17" viewBox="0 0 20 20"><path d="M17.1 10.9c0-.3.1-.6.1-.9s0-.6-.1-.9l2-1.6a.5.5 0 00.1-.6l-1.9-3.3a.5.5 0 00-.6-.2l-2.4 1c-.5-.4-1-.7-1.6-.9L12.3.4A.5.5 0 0011.9 0H8.1a.5.5 0 00-.5.4l-.4 2.5c-.6.2-1.1.5-1.6.9l-2.4-1a.5.5 0 00-.6.2L.7 6.4a.5.5 0 00.1.6l2 1.6c0 .3-.1.6-.1.9s0 .6.1.9l-2 1.6a.5.5 0 00-.1.6l1.9 3.3c.1.2.4.3.6.2l2.4-1c.5.4 1 .7 1.6.9l.4 2.5c0 .2.2.4.5.4h3.8c.2 0 .4-.2.5-.4l.4-2.5c.6-.2 1.1-.5 1.6-.9l2.4 1c.2.1.5 0 .6-.2l1.9-3.3a.5.5 0 00-.1-.6l-2-1.6zM10 13.6a3.6 3.6 0 110-7.2 3.6 3.6 0 010 7.2z"/></svg></div>
+            <div class="ic" style="background:var(--gray)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 15.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7zm0-2a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/><path d="M20.1 13c.05-.33.07-.66.07-1s-.02-.67-.07-1l2-1.55a.5.5 0 00.12-.63l-1.9-3.28a.5.5 0 00-.6-.22l-2.35.95a7.3 7.3 0 00-1.72-1l-.36-2.5a.5.5 0 00-.5-.42h-3.8a.5.5 0 00-.49.42l-.36 2.5c-.62.25-1.2.59-1.72 1l-2.35-.95a.5.5 0 00-.6.22L3.68 9.82a.5.5 0 00.12.63L5.9 12c-.05.33-.07.66-.07 1s.02.67.07 1l-2 1.55a.5.5 0 00-.12.63l1.9 3.28a.5.5 0 00.6.22l2.35-.95c.52.41 1.1.75 1.72 1l.36 2.5c.04.24.25.42.49.42h3.8a.5.5 0 00.5-.42l.36-2.5c.62-.25 1.2-.59 1.72-1l2.35.95a.5.5 0 00.6-.22l1.9-3.28a.5.5 0 00-.12-.63L20.1 13z"/></svg></div>
             <div class="rw-c"><div class="rw-l">Umum</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--blue)"><svg width="16" height="16" viewBox="0 0 20 20" fill="#fff"><circle cx="10" cy="4.5" r="2"/><path d="M4.5 8.5h11" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M10 8.5v4" stroke="#fff" stroke-width="1.8" fill="none"/><path d="M7 17l3-4.5 3 4.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+            <div class="ic" style="background:var(--blue)"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.6"/><circle cx="12" cy="7.3" r="1.7" fill="#fff"/><path d="M6.5 10c1.7.75 3.5 1 5.5 1s3.8-.25 5.5-1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><path d="M12 10.5v4.2" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><path d="M9.8 19.2L12 14.7l2.2 4.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             <div class="rw-c"><div class="rw-l">Aksesibilitas</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--gray)"><svg width="14" height="14" viewBox="0 0 20 20"><path d="M8.5 3a5.5 5.5 0 014.38 8.82l4.65 4.65a.75.75 0 01-1.06 1.06l-4.65-4.65A5.5 5.5 0 118.5 3zm0 1.5a4 4 0 100 8 4 4 0 000-8z"/></svg></div>
+            <div class="ic" style="background:var(--gray)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M10.5 3a7.5 7.5 0 015.9 12.1l4.8 4.8a1 1 0 01-1.4 1.4l-4.8-4.8A7.5 7.5 0 1110.5 3zm0 2a5.5 5.5 0 100 11 5.5 5.5 0 000-11z"/></svg></div>
             <div class="rw-c"><div class="rw-l">Cari</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:#636366"><svg width="18" height="14" viewBox="0 0 22 18" fill="none" stroke="#fff" stroke-width="1.3"><rect x="1" y="4.5" width="20" height="12" rx="2.5"/><circle cx="11" cy="10.5" r="3.5"/><circle cx="11" cy="10.5" r="1.2" fill="#fff" stroke="none"/><path d="M6 4.5L8 1.5h6l2 3"/></svg></div>
+            <div class="ic" style="background:#636366"><svg viewBox="0 0 24 18" fill="none" stroke="#fff" stroke-width="1.5"><rect x="1" y="4" width="22" height="13" rx="3"/><path d="M7 4l1.5-2.5h7L17 4"/><circle cx="12" cy="10.5" r="4"/><circle cx="12" cy="10.5" r="1.3" fill="#fff" stroke="none"/><circle cx="19" cy="7.5" r=".8" fill="#fff" stroke="none"/></svg></div>
             <div class="rw-c"><div class="rw-l">Kamera</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--blue)"><svg width="16" height="16" viewBox="0 0 20 20" fill="#fff"><circle cx="10" cy="10" r="4"/><path d="M10 1.5v2.5m0 12v2.5M1.5 10H4m12 0h2.5M3.8 3.8l1.8 1.8m9 9l1.8 1.8M16.2 3.8l-1.8 1.8m-9 9l-1.8 1.8" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-            <div class="rw-c"><div class="rw-l">Layar & Kecerahan</div></div>
+            <div class="ic" style="background:var(--blue)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.3" fill="#fff" stroke="none"/><path d="M12 2.5v2.3M12 19.2v2.3M2.5 12h2.3M19.2 12h2.3M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Layar &amp; Kecerahan</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--blue)"><svg width="12" height="18" viewBox="0 0 14 22" fill="none"><rect x="1" y="1" width="12" height="20" rx="2.5" stroke="#fff" stroke-width="1.2"/><rect x="3" y="4" width="3" height="3" rx=".6" fill="#34c759"/><rect x="8" y="4" width="3" height="3" rx=".6" fill="#ff9500"/><rect x="3" y="9" width="3" height="3" rx=".6" fill="#5856d6"/><rect x="8" y="9" width="3" height="3" rx=".6" fill="#ff3b30"/><rect x="3" y="14" width="3" height="3" rx=".6" fill="#5ac8fa"/><rect x="8" y="14" width="3" height="3" rx=".6" fill="#fff"/></svg></div>
-            <div class="rw-c"><div class="rw-l">Layar Utama & Perpustakaan App</div></div>
+            <div class="ic" style="background:var(--blue)"><svg viewBox="0 0 16 24" fill="none"><rect x="1" y="1" width="14" height="22" rx="3" stroke="#fff" stroke-width="1.4"/><rect x="4" y="5" width="3" height="3" rx=".7" fill="#fff"/><rect x="9" y="5" width="3" height="3" rx=".7" fill="#fff"/><rect x="4" y="10.5" width="3" height="3" rx=".7" fill="#fff"/><rect x="9" y="10.5" width="3" height="3" rx=".7" fill="#fff"/><rect x="4" y="16" width="3" height="3" rx=".7" fill="#fff"/><rect x="9" y="16" width="3" height="3" rx=".7" fill="#fff"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Layar Utama &amp; Perpustakaan App</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--gray)"><svg width="18" height="16" viewBox="0 0 20 16" fill="none" stroke="#fff" stroke-width="1.3"><rect x="1" y="1.5" width="18" height="5.5" rx="2.75"/><circle cx="14.5" cy="4.25" r="2" fill="#fff"/><rect x="1" y="9" width="18" height="5.5" rx="2.75"/><circle cx="5.5" cy="11.75" r="2" fill="#fff"/></svg></div>
+            <div class="ic" style="background:var(--gray)"><svg viewBox="0 0 24 20" fill="none" stroke="#fff" stroke-width="1.5"><rect x="2" y="2" width="20" height="6.5" rx="3.25"/><circle cx="17.5" cy="5.25" r="2.3" fill="#fff"/><rect x="2" y="11.5" width="20" height="6.5" rx="3.25"/><circle cx="6.5" cy="14.75" r="2.3" fill="#fff"/></svg></div>
             <div class="rw-c"><div class="rw-l">Pusat Kontrol</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:#000"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="1.3" stroke-linecap="round"><circle cx="10" cy="11.5" r="6.5"/><path d="M10 7.5v4.5l2.5 1.5"/><path d="M5.5 5.5L4 4M14.5 5.5L16 4"/><path d="M8 3.5h4"/></svg></div>
+            <div class="ic" style="background:#000"><svg viewBox="0 0 24 20" fill="#fff"><circle cx="4.5" cy="4" r="2.6" fill="none" stroke="#fff" stroke-width="1"/><path d="M4.5 2.3v1.8l1.2 .9" fill="none" stroke="#fff" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round"/><text x="22" y="6.3" text-anchor="end" font-size="6.2" font-weight="600" font-family="-apple-system,sans-serif" fill="#fff">10:09</text><rect x="2" y="11" width="10" height="6.5" rx="2" fill="#fff" opacity=".45"/><circle cx="16.5" cy="14.2" r="3" fill="#fff" opacity=".45"/><circle cx="21.5" cy="14.2" r="1.8" fill="#fff" opacity=".45"/></svg></div>
             <div class="rw-c"><div class="rw-l">Siaga</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:#110820"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#5856d6" stroke-width="1.5"/><circle cx="10" cy="10" r="6" stroke="#c850c0" stroke-width="2"/><circle cx="10" cy="10" r="4" stroke="#ff6b9d" stroke-width="2"/><circle cx="10" cy="10" r="2" fill="#ff9a9e"/></svg></div>
+            <div class="ic" style="background:#0a0514"><svg viewBox="0 0 24 24" fill="none" stroke-width=".9"><ellipse cx="12" cy="12" rx="9.5" ry="3.4" transform="rotate(0 12 12)" stroke="#ff5fa2"/><ellipse cx="12" cy="12" rx="9.5" ry="3.4" transform="rotate(22 12 12)" stroke="#ff6bce"/><ellipse cx="12" cy="12" rx="9.5" ry="3.4" transform="rotate(45 12 12)" stroke="#d07bff"/><ellipse cx="12" cy="12" rx="9.5" ry="3.4" transform="rotate(67 12 12)" stroke="#9d7bff"/><ellipse cx="12" cy="12" rx="9.5" ry="3.4" transform="rotate(90 12 12)" stroke="#6ba8ff"/><ellipse cx="12" cy="12" rx="9.5" ry="3.4" transform="rotate(112 12 12)" stroke="#9d7bff"/><ellipse cx="12" cy="12" rx="9.5" ry="3.4" transform="rotate(135 12 12)" stroke="#d07bff"/><ellipse cx="12" cy="12" rx="9.5" ry="3.4" transform="rotate(157 12 12)" stroke="#ff6bce"/></svg></div>
             <div class="rw-c"><div class="rw-l">Siri</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:#000"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#fff"><circle cx="10" cy="10" r="8.5" stroke-width="1" stroke-dasharray="2 2"/><circle cx="10" cy="10" r="5.5" stroke-width="1.3"/><circle cx="10" cy="10" r="2.5" stroke-width="1.3"/><circle cx="10" cy="10" r=".8" fill="#fff"/></svg></div>
+            <div class="ic" style="background:#000"><svg viewBox="0 0 24 24" fill="none" stroke="#fff"><circle cx="12" cy="12" r="10.5" stroke-width="1.1" stroke-dasharray="2.4 2.4"/><circle cx="12" cy="12" r="7" stroke-width="1.5"/><circle cx="12" cy="12" r="3.5" stroke-width="1.5"/><circle cx="12" cy="12" r="1" fill="#fff"/></svg></div>
             <div class="rw-c"><div class="rw-l">Tampilan</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--teal)"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="1.2"><ellipse cx="10" cy="10" rx="8" ry="3"/><ellipse cx="10" cy="10" rx="8" ry="3" transform="rotate(60 10 10)"/><ellipse cx="10" cy="10" rx="8" ry="3" transform="rotate(-60 10 10)"/><circle cx="10" cy="10" r="1.5" fill="#fff"/></svg></div>
+            <div class="ic" style="background:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="1.8" fill="#fff" stroke="none"/></svg></div>
             <div class="rw-c"><div class="rw-l">Wallpaper</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
@@ -252,22 +253,22 @@ body{
       <div class="sec">
         <div class="cd">
           <div class="rw icn">
-            <div class="ic" style="background:var(--red)"><svg width="14" height="16" viewBox="0 0 14 18" fill="#fff"><path d="M7 0a2 2 0 00-2 2v.3C2.2 3.4.5 6 .5 9v3.5L0 14v1h14v-1l-.5-1.5V9c0-3-1.7-5.6-4.5-6.7V2a2 2 0 00-2-2zM7 18a2 2 0 002-2H5a2 2 0 002 2z"/></svg></div>
+            <div class="ic" style="background:var(--red)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a2 2 0 00-2 2v.6C7 5.4 5 8.1 5 11.5v4L3.4 18v1h17.2v-1L19 15.5v-4c0-3.4-2-6.1-5-6.9V4a2 2 0 00-2-2z"/><path d="M12 22a2.5 2.5 0 002.5-2.5h-5A2.5 2.5 0 0012 22z"/></svg></div>
             <div class="rw-c"><div class="rw-l">Notifikasi</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--pink)"><svg width="16" height="16" viewBox="0 0 20 20" fill="#fff"><path d="M2 8v4h3l5 5V3L5 8H2z"/><path d="M12 10a2.5 2.5 0 00-1.5-2.3v4.6A2.5 2.5 0 0012 10z"/><path d="M14.5 10c0-2.2-1.2-4-3-5v1.5a4 4 0 010 7V15c1.8-1 3-2.8 3-5z"/></svg></div>
-            <div class="rw-c"><div class="rw-l">Bunyi & Haptik</div></div>
+            <div class="ic" style="background:var(--pink)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M3 9v6h4l6 5V4L7 9H3z"/><path d="M16 8.5a5.5 5.5 0 010 7" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><path d="M18.7 6a9 9 0 010 12" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Bunyi &amp; Haptik</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--indigo)"><svg width="14" height="14" viewBox="0 0 20 20" fill="#fff"><path d="M7.5 2C4 3.5 2 7 2 10.5 2 15 5.5 18 10 18c3 0 5.5-1.5 7-4-1 .5-2 .7-3.2.7C9.5 14.7 6 11.5 6 7.5c0-2 .6-3.8 1.5-5.5z"/></svg></div>
+            <div class="ic" style="background:var(--indigo)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9.5 3A9 9 0 0021 15.5 8 8 0 119.5 3z"/></svg></div>
             <div class="rw-c"><div class="rw-l">Fokus</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--indigo)"><svg width="12" height="16" viewBox="0 0 12 18" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><path d="M2 1h8M2 17h8"/><path d="M2 1v3c0 2 2 4 4 5-2 1-4 3-4 5v3"/><path d="M10 1v3c0 2-2 4-4 5 2 1 4 3 4 5v3"/></svg></div>
+            <div class="ic" style="background:var(--indigo)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12M6 21h12"/><path d="M6 3v3.5c0 2.5 2.5 4.5 6 5.5M6 21v-3.5c0-2.5 2.5-4.5 6-5.5"/><path d="M18 3v3.5c0 2.5-2.5 4.5-6 5.5M18 21v-3.5c0-2.5-2.5-4.5-6-5.5"/></svg></div>
             <div class="rw-c"><div class="rw-l">Durasi Layar</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
@@ -278,18 +279,18 @@ body{
       <div class="sec">
         <div class="cd">
           <div class="rw icn">
-            <div class="ic" style="background:var(--green)"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><path d="M3 6V3h3M14 3h3v3M3 14v3h3M14 17h3v-3"/><path d="M7 7.5v1.5M13 7.5v1.5"/><path d="M7.5 13c1 1.5 4 1.5 5 0"/><path d="M10 9v2.5h-1"/></svg></div>
-            <div class="rw-c"><div class="rw-l">Face ID & Kode Sandi</div></div>
+            <div class="ic" style="background:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 011-1h3M16 4h3a1 1 0 011 1v3M4 16v3a1 1 0 001 1h3M16 20h3a1 1 0 001-1v-3"/><path d="M9 9.5v1.5M15 9.5v1.5"/><path d="M12 9.5v3h-1.4"/><path d="M9.3 15.2c1.6 1.3 3.8 1.3 5.4 0"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Face ID &amp; Kode Sandi</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--red)"><svg width="16" height="12" viewBox="0 0 24 14" fill="#fff"><text x="12" y="11" text-anchor="middle" font-size="10" font-weight="800" font-family="-apple-system,sans-serif" fill="#fff">SOS</text></svg></div>
+            <div class="ic" style="background:var(--red)"><svg viewBox="0 0 24 14" fill="#fff"><text x="12" y="11" text-anchor="middle" font-size="11" font-weight="800" font-family="-apple-system,sans-serif" fill="#fff">SOS</text></svg></div>
             <div class="rw-c"><div class="rw-l">Darurat SOS</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:var(--blue)"><svg width="14" height="16" viewBox="0 0 16 20" fill="#fff"><path d="M8 1c-.8 0-1.5.7-1.5 1.5V9H5c-.8 0-1.5.7-1.5 1.5S4.2 12 5 12h.5V9.5h1V12H8v-2.5h1V12h1.5v-2.5h1V12h.5c.8 0 1.5-.7 1.5-1.5V9h-1.5V2.5C12.5 1.7 11.8 1 11 1s-1.5.7-1.5 1.5V9h-1V2.5C8.5 1.7 8.8 1 8 1zM5 12v3c0 2.2 1.3 4 3 4s3-1.8 3-4v-3"/></svg></div>
-            <div class="rw-c"><div class="rw-l">Privasi & Keamanan</div></div>
+            <div class="ic" style="background:var(--blue)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M16.6 12V6.3a1.1 1.1 0 00-2.2 0v4.4h-.8V4.4a1.1 1.1 0 00-2.2 0v6.3h-.8V4.9a1.1 1.1 0 00-2.2 0v5.8h-.8V7.4a1.1 1.1 0 00-2.2 0v7.4c0 .9.2 1.7.6 2.5l1.4 2.6a5.6 5.6 0 005 3h.9a5.6 5.6 0 005.6-5.6V9.6a1.1 1.1 0 00-2.2 0V12z"/></svg></div>
+            <div class="rw-c"><div class="rw-l">Privasi &amp; Keamanan</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
         </div>
@@ -299,17 +300,17 @@ body{
       <div class="sec">
         <div class="cd">
           <div class="rw icn">
-            <div class="ic" style="background:#1c1c1e"><svg width="16" height="14" viewBox="0 0 20 16" fill="none"><rect x="1" y="0" width="18" height="14" rx="3" fill="#fff"/><rect x="1" y="2" width="18" height="10" rx="2" fill="#1c1c1e"/><rect x="3" y="4" width="14" height="2.5" rx=".8" fill="#ff9500"/><rect x="3" y="8" width="14" height="2.5" rx=".8" fill="#ff3b30"/></svg></div>
+            <div class="ic" style="background:#1c1c1e"><svg viewBox="0 0 24 20" fill="none"><rect x="4" y="2" width="16" height="4" rx="1.5" fill="#ff3b30"/><rect x="3" y="4.5" width="18" height="4" rx="1.5" fill="#ff9500"/><rect x="2" y="7.5" width="20" height="10.5" rx="2.5" fill="#fff"/></svg></div>
             <div class="rw-c"><div class="rw-l">Dompet</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:#f5f5f7"><svg width="20" height="20" viewBox="0 0 20 20"><circle cx="7" cy="7.5" r="4.5" fill="#ff6b9d" opacity=".85"/><circle cx="13" cy="7.5" r="4.5" fill="#5ac8fa" opacity=".85"/><circle cx="10" cy="13" r="4.5" fill="#ffd60a" opacity=".85"/><circle cx="5.5" cy="13" r="3" fill="#34c759" opacity=".75"/><circle cx="14.5" cy="13" r="3" fill="#bf5af2" opacity=".75"/></svg></div>
+            <div class="ic" style="background:#f2f2f7"><svg viewBox="0 0 24 24"><circle cx="8.5" cy="9" r="5.5" fill="#ff6b9d" opacity=".85"/><circle cx="15.5" cy="9" r="5.5" fill="#5ac8fa" opacity=".85"/><circle cx="12" cy="15" r="5.5" fill="#ffd60a" opacity=".85"/><circle cx="7" cy="15.5" r="3.8" fill="#34c759" opacity=".8"/><circle cx="17" cy="15.5" r="3.8" fill="#bf5af2" opacity=".8"/></svg></div>
             <div class="rw-c"><div class="rw-l">Game Center</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
           <div class="rw icn">
-            <div class="ic" style="background:#e8f0fe"><svg width="18" height="13" viewBox="0 0 22 16"><path d="M17.5 14H5.5a5 5 0 01-.5-10A6.5 6.5 0 0118 5.5 4 4 0 0117.5 14z" fill="#4a9eff"/></svg></div>
+            <div class="ic" style="background:#f2f2f7"><svg viewBox="0 0 24 18" fill="#4a9eff"><path d="M18.5 16h-12a5.5 5.5 0 01-.5-11A7 7 0 0119 6.5a4.5 4.5 0 01-.5 9.5z"/></svg></div>
             <div class="rw-c"><div class="rw-l">iCloud</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
@@ -320,7 +321,7 @@ body{
       <div class="sec">
         <div class="cd">
           <div class="rw icn">
-            <div class="ic" style="background:#fff"><svg width="22" height="22" viewBox="0 0 20 20"><rect x=".5" y=".5" width="5.5" height="5.5" rx="1.2" fill="#ff3b30"/><rect x="7.2" y=".5" width="5.5" height="5.5" rx="1.2" fill="#ff9500"/><rect x="14" y=".5" width="5.5" height="5.5" rx="1.2" fill="#ffd60a"/><rect x=".5" y="7.2" width="5.5" height="5.5" rx="1.2" fill="#34c759"/><rect x="7.2" y="7.2" width="5.5" height="5.5" rx="1.2" fill="#5ac8fa"/><rect x="14" y="7.2" width="5.5" height="5.5" rx="1.2" fill="#007aff"/><rect x=".5" y="14" width="5.5" height="5.5" rx="1.2" fill="#5856d6"/><rect x="7.2" y="14" width="5.5" height="5.5" rx="1.2" fill="#ff2d55"/><rect x="14" y="14" width="5.5" height="5.5" rx="1.2" fill="#af52de"/></svg></div>
+            <div class="ic" style="background:#fff"><svg viewBox="0 0 22 22"><rect x="0" y="0" width="6" height="6" rx="1.4" fill="#ff3b30"/><rect x="8" y="0" width="6" height="6" rx="1.4" fill="#ff9500"/><rect x="16" y="0" width="6" height="6" rx="1.4" fill="#ffd60a"/><rect x="0" y="8" width="6" height="6" rx="1.4" fill="#34c759"/><rect x="8" y="8" width="6" height="6" rx="1.4" fill="#5ac8fa"/><rect x="16" y="8" width="6" height="6" rx="1.4" fill="#007aff"/><rect x="0" y="16" width="6" height="6" rx="1.4" fill="#5856d6"/><rect x="8" y="16" width="6" height="6" rx="1.4" fill="#ff2d55"/><rect x="16" y="16" width="6" height="6" rx="1.4" fill="#af52de"/></svg></div>
             <div class="rw-c"><div class="rw-l">App</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
@@ -331,7 +332,7 @@ body{
       <div class="sec">
         <div class="cd">
           <div class="rw icn">
-            <div class="ic" style="background:var(--gray)"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-linecap="round"><line x1="4" y1="16" x2="11.5" y2="8.5" stroke-width="2.5"/><line x1="8" y1="5" x2="15" y2="12" stroke-width="3.5"/></svg></div>
+            <div class="ic" style="background:var(--gray)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20L13 11" stroke-width="2.6"/><path d="M9 6l7 7" stroke-width="4.2"/></svg></div>
             <div class="rw-c"><div class="rw-l">Pengembang</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
@@ -344,9 +345,9 @@ body{
     <!-- Bottom search bar (fixed) -->
     <div class="bsrch">
       <div class="bsrch-in">
-        <svg width="14" height="14" viewBox="0 0 20 20" style="fill:var(--fg3);flex-shrink:0"><path d="M8.5 3a5.5 5.5 0 014.38 8.82l4.65 4.65a.75.75 0 01-1.06 1.06l-4.65-4.65A5.5 5.5 0 118.5 3zm0 1.5a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 20 20" style="flex-shrink:0"><path d="M8.5 3a5.5 5.5 0 014.38 8.82l4.65 4.65a.75.75 0 01-1.06 1.06l-4.65-4.65A5.5 5.5 0 118.5 3zm0 1.5a4 4 0 100 8 4 4 0 000-8z" fill="var(--fg3)"/></svg>
         <span class="bsrch-ph">Cari</span>
-        <svg class="bsrch-mic" width="12" height="18" viewBox="0 0 12 18" style="fill:var(--fg3)"><rect x="3" y="0" width="6" height="10" rx="3"/><path d="M0 8a6 6 0 0012 0" fill="none" stroke="var(--fg3)" stroke-width="1.5"/><path d="M6 14v3" fill="none" stroke="var(--fg3)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <svg class="bsrch-mic" width="12" height="18" viewBox="0 0 12 18"><rect x="3" y="0" width="6" height="10" rx="3" fill="var(--fg3)"/><path d="M0 8a6 6 0 0012 0" fill="none" stroke="var(--fg3)" stroke-width="1.5"/><path d="M6 14v3" fill="none" stroke="var(--fg3)" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
     </div>
   </div>
@@ -373,7 +374,7 @@ body{
       <div class="sec">
         <div class="cd">
           <div class="rw"><div class="rw-c"><div class="rw-l">AirDrop</div></div><div class="rw-v">Menerima Mati</div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
-          <div class="rw"><div class="rw-c"><div class="rw-l">AirPlay & Kontinuitas</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">AirPlay &amp; Kontinuitas</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
           <div class="rw"><div class="rw-c"><div class="rw-l">Gambar dalam Gambar</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
           <div class="rw"><div class="rw-c"><div class="rw-l">CarPlay</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
         </div>
@@ -381,7 +382,7 @@ body{
       <div class="sec">
         <div class="cd">
           <div class="rw" onclick="go('p-vpn')">
-            <div class="rw-c"><div class="rw-l">Manajemen VPN & Perangkat</div></div>
+            <div class="rw-c"><div class="rw-l">Manajemen VPN &amp; Perangkat</div></div>
             <span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span>
           </div>
         </div>
@@ -389,7 +390,7 @@ body{
       <div class="sec">
         <div class="cd">
           <div class="rw"><div class="rw-c"><div class="rw-l">Kamus</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
-          <div class="rw"><div class="rw-c"><div class="rw-l">Bahasa & Wilayah</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">Bahasa &amp; Wilayah</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
         </div>
       </div>
       <div class="sec">
@@ -406,17 +407,18 @@ body{
   <div class="pg" id="p-vpn" data-s="r">
     <div class="nb">
       <button class="nb-back" onclick="back('p-gen')"><svg width="11" height="18" viewBox="0 0 11 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5L2 9l7.5 7.5"/></svg></button>
-      <span class="nb-ttl">Manajemen VPN & Perangkat</span>
+      <span class="nb-ttl">Manajemen VPN &amp; Perangkat</span>
     </div>
     <div class="scr">
       <div class="sec" style="margin-top:12px">
         <div class="cd">
           <div class="rw icn" style="cursor:default">
             <div class="vpn-globe">
-              <svg width="16" height="16" viewBox="0 0 20 20" fill="#fff">
-                <circle cx="10" cy="10" r="8.5" fill="none" stroke="#fff" stroke-width="1.5"/>
-                <ellipse cx="10" cy="10" rx="4" ry="8.5" fill="none" stroke="#fff" stroke-width="1.5"/>
-                <path d="M2 7.5h16M2 12.5h16" stroke="#fff" stroke-width="1.2"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4">
+                <circle cx="12" cy="9" r="7"/>
+                <ellipse cx="12" cy="9" rx="3" ry="7"/>
+                <path d="M5 9h14M6 5.5h12M6 12.5h12"/>
+                <path d="M12 16v4M8.5 20h7"/>
               </svg>
             </div>
             <div class="rw-c"><div class="rw-l">VPN</div></div>
@@ -448,14 +450,14 @@ body{
       <div class="sec">
         <div class="cd">
           <div class="rw"><div class="rw-c"><div class="rw-l">Info Pribadi</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
-          <div class="rw"><div class="rw-c"><div class="rw-l">Masuk & Keamanan</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
-          <div class="rw"><div class="rw-c"><div class="rw-l">Pembayaran & Pengiriman</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">Masuk &amp; Keamanan</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">Pembayaran &amp; Pengiriman</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
         </div>
       </div>
       <div class="sec">
         <div class="cd">
           <div class="rw"><div class="rw-c"><div class="rw-l">iCloud</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
-          <div class="rw"><div class="rw-c"><div class="rw-l">Media & Pembelian</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
+          <div class="rw"><div class="rw-c"><div class="rw-l">Media &amp; Pembelian</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
           <div class="rw"><div class="rw-c"><div class="rw-l">Cari Milik Saya</div></div><span class="chv"><svg viewBox="0 0 7 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l5 5-5 5"/></svg></span></div>
         </div>
       </div>
