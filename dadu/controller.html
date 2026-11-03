@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Dadu Controller</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#1c1c1e;color:#fff;
+min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+h1{font-size:20px;font-weight:600;margin-bottom:8px;color:#fff}
+.sub{font-size:14px;color:#8e8e93;margin-bottom:24px}
+.room-input{display:flex;gap:8px;margin-bottom:32px;width:100%;max-width:320px}
+.room-input input{flex:1;padding:12px 16px;border-radius:12px;border:none;background:#2c2c2e;
+color:#fff;font-size:17px;text-align:center;letter-spacing:4px;text-transform:uppercase;
+font-family:monospace}
+.room-input input::placeholder{color:#48484a;letter-spacing:0}
+.room-input button{padding:12px 20px;border-radius:12px;border:none;background:#007aff;
+color:#fff;font-size:15px;font-weight:600;cursor:pointer}
+.room-input button:active{opacity:.7}
+.status{font-size:13px;margin-bottom:24px;padding:6px 16px;border-radius:20px;
+background:#2c2c2e;display:inline-flex;align-items:center;gap:6px}
+.status .dot{width:8px;height:8px;border-radius:50%;background:#ff3b30}
+.status.connected .dot{background:#34c759}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;max-width:320px;
+margin-bottom:24px}
+.dice-btn{aspect-ratio:1;border-radius:16px;border:none;background:#2c2c2e;color:#fff;
+font-size:32px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;
+transition:transform .1s,background .15s}
+.dice-btn:active{transform:scale(.92);background:#3a3a3c}
+.dice-btn.selected{background:#007aff;transform:scale(1.05)}
+.last-sent{font-size:14px;color:#8e8e93;margin-top:8px}
+</style>
+</head>
+<body>
+<h1>🎲 Dadu Remote Controller</h1>
+<div class="sub">Kontrol hasil dadu dari jarak jauh</div>
+
+<div class="room-input">
+<input type="text" id="roomInput" placeholder="Room code" maxlength="6" autocomplete="off">
+<button onclick="connectRoom()">Sambung</button>
+</div>
+
+<div class="status" id="status">
+<div class="dot"></div>
+<span>Belum tersambung</span>
+</div>
+
+<div class="grid">
+<button class="dice-btn" onclick="sendNum(1)">1</button>
+<button class="dice-btn" onclick="sendNum(2)">2</button>
+<button class="dice-btn" onclick="sendNum(3)">3</button>
+<button class="dice-btn" onclick="sendNum(4)">4</button>
+<button class="dice-btn" onclick="sendNum(5)">5</button>
+<button class="dice-btn" onclick="sendNum(6)">6</button>
+</div>
+
+<div class="last-sent" id="lastSent">Pilih angka untuk dikirim</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.4/peerjs.min.js"></script>
+<script>
+let peer = null;
+let conn = null;
+
+const params = new URLSearchParams(location.search);
+if (params.get('room')) {
+document.getElementById('roomInput').value = params.get('room');
+setTimeout(connectRoom, 500);
+}
+
+function connectRoom() {
+const code = document.getElementById('roomInput').value.trim().toUpperCase();
+if (!code) return;
+const st = document.getElementById('status');
+st.innerHTML = '<div class="dot" style="background:#ff9500"></div><span>Menyambung...</span>';
+
+if (peer) peer.destroy();
+peer = new Peer(undefined, {
+debug: 0,
+config: { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] }
+});
+
+peer.on('open', () => {
+conn = peer.connect('dadu-' + code);
+conn.on('open', () => {
+st.className = 'status connected';
+st.innerHTML = '<div class="dot"></div><span>Tersambung ke ' + code + '</span>';
+});
+conn.on('error', () => {
+st.innerHTML = '<div class="dot"></div><span>Gagal tersambung</span>';
+});
+});
+
+peer.on('error', (err) => {
+st.innerHTML = '<div class="dot"></div><span>Error: ' + err.type + '</span>';
+});
+}
+
+function sendNum(n) {
+if (!conn || !conn.open) {
+document.getElementById('lastSent').textContent = 'Belum tersambung!';
+return;
+}
+conn.send(n);
+document.querySelectorAll('.dice-btn').forEach(b => b.classList.remove('selected'));
+event.target.classList.add('selected');
+document.getElementById('lastSent').textContent = 'Terkirim: ' + n + ' — tap Lempar di dadu';
+setTimeout(() => event.target.classList.remove('selected'), 1000);
+}
+</script>
+</body>
+</html>
